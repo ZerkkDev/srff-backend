@@ -37,7 +37,7 @@ class AuthController extends Controller
             'created_at' => date("Y-m-d H:i:s")
         ]);
 
-        $url = 'https://www.zonagamerstore.com/#/register/confirmacion/' . $token;
+        $url = 'https://zonagamerstore.com/#/register/confirmacion/' . $token;
         Mail::to($usuario->correo)->send(new Register($url));
         return ['message' => 'Revise su correo para activar su cuenta.'];
     }
@@ -68,7 +68,7 @@ class AuthController extends Controller
             ->where('token', $request->token)->first();
 
         if ($token) {
-            $url = 'https://www.zonagamerstore.com/#/register/confirmacion/' . $token->token;
+            $url = 'https://zonagamerstore.com/#/register/confirmacion/' . $token->token;
             Mail::to($token->email)->send(new Register($url));
             return ['message' => 'Revise su correo para activar su cuenta.'];
         }
@@ -233,7 +233,7 @@ class AuthController extends Controller
             'created_at' => date("Y-m-d H:i:s")
         ]);
 
-        $url = 'https://www.zonagamerstore.com/#/password/reset/' . $token;
+        $url = 'https://zonagamerstore.com/#/password/reset/' . $token;
         Mail::to($usuario->correo)->send(new Password($usuario, $url));
         return ['message' => 'Correo enviado'];
     }
